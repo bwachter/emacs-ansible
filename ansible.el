@@ -37,7 +37,7 @@
 ;;
 ;; Below are complete command list:
 ;;
-;;  `ansible'
+;;  `ansible-mode'
 ;;    Ansible minor mode.
 ;;
 ;;; Customizable Options:
@@ -314,7 +314,7 @@ If BUFFER-COUNT is passed and is > 1, then skip unloading."
              ;; when called via kill-hook, the buffer is still existent
 	     (= (or buffer-count 1)
 		(seq-count (lambda (b)
-                             (with-current-buffer b ansible))
+                             (with-current-buffer b ansible-mode))
                            (buffer-list))))
     (setq yas-snippet-dirs (delete ansible-snip-dir yas-snippet-dirs))
     (yas-reload-all)))
@@ -330,7 +330,7 @@ If BUFFER-COUNT is passed and is > 1, then skip unloading."
   "Ansible minor mode."
   :lighter " Ansible"
   :group 'ansible
-  (if ansible
+  (if ansible-mode
       (progn
         (setq minor-mode-map-alist
               (cons (cons 'ansible ansible-key-map)
