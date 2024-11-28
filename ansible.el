@@ -320,12 +320,6 @@ If BUFFER-COUNT is passed and is > 1, then skip unloading."
     (yas-reload-all)))
 
 ;;;###autoload
-(defvar ansible-mode nil
-  "Non-nil if Ansible minor mode is enabled.")
-(defvaralias 'ansible-mode 'ansible)
-(make-variable-buffer-local 'ansible-mode)
-
-;;;###autoload
 (define-minor-mode ansible-mode
   "Ansible minor mode."
   :lighter " Ansible"
@@ -345,7 +339,11 @@ If BUFFER-COUNT is passed and is > 1, then skip unloading."
         (run-hooks 'ansible-hook))
     (ansible-remove-font-lock)
     (ansible-maybe-unload-snippets 0)))
-(defalias 'ansible 'ansible-mode)
+
+;; Aliases for the old non-standard "ansible" mode name
+(define-obsolete-function-alias 'ansible 'ansible-mode "2024-11-28")
+(with-no-warnings
+  (define-obsolete-variable-alias 'ansible 'ansible-mode "2024-11-28"))
 
 (defun ansible-update-root-path ()
   "Update `ansible-root-path'."
