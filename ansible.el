@@ -37,7 +37,7 @@
 ;;
 ;; Below are complete command list:
 ;;
-;;  `ansible'
+;;  `ansible-mode'
 ;;    Ansible minor mode.
 ;;
 ;;; Customizable Options:
@@ -314,23 +314,17 @@ If BUFFER-COUNT is passed and is > 1, then skip unloading."
              ;; when called via kill-hook, the buffer is still existent
 	     (= (or buffer-count 1)
 		(seq-count (lambda (b)
-                             (with-current-buffer b ansible))
+                             (with-current-buffer b ansible-mode))
                            (buffer-list))))
     (setq yas-snippet-dirs (delete ansible-snip-dir yas-snippet-dirs))
     (yas-reload-all)))
-
-;;;###autoload
-(defvar ansible-mode nil
-  "Non-nil if Ansible minor mode is enabled.")
-(defvaralias 'ansible-mode 'ansible)
-(make-variable-buffer-local 'ansible-mode)
 
 ;;;###autoload
 (define-minor-mode ansible-mode
   "Ansible minor mode."
   :lighter " Ansible"
   :group 'ansible
-  (if ansible
+  (if ansible-mode
       (progn
         (setq minor-mode-map-alist
               (cons (cons 'ansible ansible-key-map)
@@ -345,7 +339,11 @@ If BUFFER-COUNT is passed and is > 1, then skip unloading."
         (run-hooks 'ansible-hook))
     (ansible-remove-font-lock)
     (ansible-maybe-unload-snippets 0)))
-(defalias 'ansible 'ansible-mode)
+
+;; Aliases for the old non-standard "ansible" mode name
+(define-obsolete-function-alias 'ansible 'ansible-mode "2024-11-28")
+(with-no-warnings
+  (define-obsolete-variable-alias 'ansible 'ansible-mode "2024-11-28"))
 
 (defun ansible-update-root-path ()
   "Update `ansible-root-path'."
