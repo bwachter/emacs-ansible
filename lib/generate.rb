@@ -57,14 +57,14 @@ Dir::glob(__dir__ + "/ansible/lib/ansible/modules/**/*").each {|f|
   options = ' $2' unless doc['options']
 
   options << ' $0'
-  template = <<EOS
-# name : <%= doc['short_description'] %>
-# key : <%= doc['module'] %>
-# condition: ansible
-# --
-- name: ${1:<%= doc['short_description'] %>}
-  <%= doc['module'] %>:<%= options %>
-EOS
+  template = <<~END_SNIPPET
+    # name : <%= doc['short_description'] %>
+    # key : <%= doc['module'] %>
+    # condition: ansible
+    # --
+    - name: ${1:<%= doc['short_description'] %>}
+      <%= doc['module'] %>:<%= options %>
+  END_SNIPPET
   snippet = ERB.new template
   dirname = File.basename(File.dirname(f))
   snippet_dir = File.join(__dir__ + "/../snippets/text-mode/ansible", dirname)
