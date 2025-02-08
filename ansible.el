@@ -272,16 +272,24 @@ Used for vars, tasks, handlers, etc."
 
 
 (defvar ansible-playbook-font-lock
-  `(("\\({{\\)\\([^}]+\\)\\(}}\\)"
-     (1 font-lock-builtin-face t)
-     (2 font-lock-function-name-face t)
-     (3 font-lock-builtin-face t))
-    (,ansible-section-keywords-regex    (1 ansible-section-face t))
+`((,ansible-section-keywords-regex    (1 ansible-section-face t))
     (,ansible-task-keywords-regex       (1 font-lock-keyword-face t))
+    (,ansible-keywords-regex            (1 font-lock-builtin-face t))
     ("^ *- \\(name\\):\\([^#\n]*\\)"
      (1 font-lock-builtin-face t)
      (2 ansible-task-label-face t))
-    (,ansible-keywords-regex            (1 font-lock-builtin-face t)))
+    ("\\({{\\)\\([^}]+\\)\\(}}\\)"
+     (1 font-lock-builtin-face t)
+     (2 font-lock-function-name-face t)
+     (3 font-lock-builtin-face t))
+    ("\\({%\\)\\([^}]+\\)\\(%}\\)"
+     (1 font-lock-builtin-face t)
+     (2 font-lock-function-name-face t)
+     (3 font-lock-builtin-face t))
+    ("\\({#\\)\\([^}]+\\)\\(#}\\)"
+     (1 font-lock-comment-delimiter-face t)
+     (2 font-lock-comment-face t)
+     (3 font-lock-comment-delimiter-face t)))
   "Font lock definitions for ansible playbooks.")
 
 
