@@ -1,10 +1,12 @@
-**ChangeLog for 0.5.0**
+**ChangeLog since 0.4.0**
 
-This version's changes revolve around the included snippets.
+#### **Changed**
+- **Snippet creation**
+  - Update lib/generate.rb so that it checks out the ansible subdirectory to create and generate the snippets ([commit 68877788](https://gitlab.com/emacs-ansible/emacs-ansible/-/commit/68877788)).
 
-- The lib/ansible submodule has been removed (9fe96351).
-- In its place, update lib/generate.rb so that it checks out the ansible subdirectory to create and generate the snippets (68877788).
-- Bump version.
+#### **Fixed**
+- **Submodule removal**
+  - The lib/ansible submodule has been removed ([#6](https://gitlab.com/emacs-ansible/emacs-ansible/-/issues/6)).
 
 **Changelog Since Version 0.3.2**
 
