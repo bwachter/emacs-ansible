@@ -1,3 +1,11 @@
+**ChangeLog for 0.5.0**
+
+This version's changes revolve around the included snippets.
+
+- The lib/ansible submodule has been removed (9fe96351).
+- In its place, update lib/generate.rb so that it checks out the ansible subdirectory to create and generate the snippets (68877788).
+- Bump version.
+
 **Changelog Since Version 0.3.2**
 
 #### **Added**
