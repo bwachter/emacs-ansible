@@ -1,0 +1,6 @@
+# name : Fail with custom message
+# key : fail
+# condition: ansible-mode
+# --
+- name: ${1:Fail with custom message}
+  fail: $0

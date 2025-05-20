@@ -1,0 +1,6 @@
+# name : Configure a .deb package
+# key : debconf
+# condition: ansible-mode
+# --
+- name: ${1:Configure a .deb package}
+  debconf: name=$2 $0

@@ -1,0 +1,6 @@
+# name : Manage hostname
+# key : hostname
+# condition: ansible-mode
+# --
+- name: ${1:Manage hostname}
+  hostname: name=$2 $0
