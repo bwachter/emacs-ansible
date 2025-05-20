@@ -1,5 +1,9 @@
 # Ansible minor mode
 
+This is a fork of https://gitlab.com/emacs-ansible/emacs-ansible - though forked from the old Github repository, with the latest Gitlab changes pulled. Reason for this is that Gitlab now makes me jump through Clownflare just to log in, and I can't be bothered with that.
+
+As my changes are rather invasive I'd not expect upstream to be interested in merging that anyway.
+
 ## Requirement
 
 - yasnippet
@@ -7,9 +11,7 @@
 
 ## Installation
 
-It's available on [Melpa](http://melpa.milkbox.net/)
-
-    M-x package-install ansible
+If you prefer this variant over upstream, just clone it, and add it to your load path.
 
 ## Usage
 
